@@ -27,7 +27,7 @@ class myData(Dataset):  # Inherited the Dataset class
         return len(self.img_path)
 
 
-root_dir = 'hymenoptera_data/train'
+root_dir = '../hymenoptera_data/train'
 label_ant = 'ants'
 label_bee = 'bees'
 
