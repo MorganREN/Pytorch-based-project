@@ -4,7 +4,6 @@ Author: mohanren
 Date: 07//07//2022//
 """
 import torch
-import torch.nn.functional as F
 import torchvision
 from torch.utils.data import DataLoader
 from torch.utils.tensorboard import SummaryWriter
