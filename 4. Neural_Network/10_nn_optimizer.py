@@ -11,7 +11,7 @@ from torch.utils.tensorboard import SummaryWriter
 import torchvision
 
 dataset = torchvision.datasets.CIFAR10('./data', download=True, train=False, transform=torchvision.transforms.ToTensor())
-dataloader = DataLoader(dataset, batch_size=1)
+dataloader = DataLoader(dataset, batch_size=64)
 
 class Tudui(nn.Module):
     def __init__(self):
@@ -34,9 +34,12 @@ class Tudui(nn.Module):
 
 loss = nn.CrossEntropyLoss()
 tudui = Tudui()
+optim = torch.optim.SGD(tudui.parameters(), lr=0.01)
 for data in dataloader:
     img, label = data
     outputs = tudui(img)
     loss_result = loss(outputs, label)
+    optim.zero_grad()
     loss_result.backward()
+    optim.step()
     print(loss_result)
