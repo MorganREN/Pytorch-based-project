@@ -56,14 +56,20 @@ for i in range(5):
 
     # Test start
     total_test_loss = 0
+    total_accuracy = 0
     with torch.no_grad():
         for data in test_loader:
             imgs, labels = data
             outputs = mohan(imgs)
             loss = loss_fn(outputs, labels)
             total_test_loss += loss
+            accuracy = (outputs.argmax(1) == labels).sum()
+            total_accuracy += accuracy
+
     writer.add_scalar('test_loss', total_test_loss, total_test_step)
+    writer.add_scalar('test_accuracy', total_accuracy / data_test_size, total_test_step)
     print("The total loss in the testing dataset is {}".format(total_test_loss))
+    print("Total accuracy: {} \n".format(total_accuracy / data_test_size))
     total_test_step += 1
 
 writer.close()
