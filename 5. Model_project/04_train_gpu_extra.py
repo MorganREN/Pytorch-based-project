@@ -9,7 +9,7 @@ from torch.utils.data import DataLoader
 from torch.utils.tensorboard import SummaryWriter
 from torch import nn
 
-device = torch.device('mps')
+device = torch.device('cuda')
 
 # Build Neural Network
 class Mohan(nn.Module):
