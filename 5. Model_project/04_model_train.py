@@ -68,6 +68,7 @@ for i in range(5):
 
     writer.add_scalar('test_loss', total_test_loss, total_test_step)
     writer.add_scalar('test_accuracy', total_accuracy / data_test_size, total_test_step)
+    torch.save(mohan, 'mohan_{}.pth'.format(i))
     print("The total loss in the testing dataset is {}".format(total_test_loss))
     print("Total accuracy: {} \n".format(total_accuracy / data_test_size))
     total_test_step += 1
