@@ -35,7 +35,7 @@ class Mohan(nn.Module):
         return self.model(x)
 
 
-model = torch.load('./mohan_1.pth')
+model = torch.load('./mohan_19.pth', map_location=torch.device('cpu'))
 img = torch.reshape(img, (1, 3, 32, 32))
 model.eval()
 with torch.no_grad():
